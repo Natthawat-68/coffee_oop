@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "green-grounds-coffee"
 version = "0.1.0"
-description = "Coffee Shop POS System - OOP Final Project"
+description = "โปรแกรมขายหน้าร้านกาแฟ"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [

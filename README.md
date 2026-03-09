@@ -1,47 +1,39 @@
-# Green Grounds Coffee - POS System
+# Green Grounds Coffee
 
-โปรแกรมระบบขายหน้าร้านสำหรับร้านกาแฟ พัฒนาด้วย PyQt6 และหลักการ OOP
+โปรแกรมขายหน้าร้านกาแฟ พัฒนาด้วย Python และ PyQt6 สำหรับใช้ในการรับคำสั่งซื้อ แสดงใบเสร็จ และสรุปยอดขาย
 
-## สมาชิกทีม
+## ผู้จัดทำ
 
-- Natthawat Khaokaew - Developer
+นัธทวัฒน์ เขาแก้ว 68114540337
+
+## ความต้องการของระบบ
+
+- Python 3.9 ขึ้นไป
+- PyQt6
 
 ## วิธีการติดตั้ง
 
-### 1. Clone Repository
+1. Clone โปรเจกต์
 
 ```bash
 git clone https://github.com/Natthawat-68/coffee_oop.git
 cd coffee_oop
 ```
 
-### 2. สร้าง Virtual Environment (แนะนำ)
+2. สร้าง Virtual Environment (ถ้าต้องการ)
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-Mac/Linux:
-
-```bash
-source venv/bin/activate
-```
-
-### 3. ติดตั้ง Dependencies
+3. ติดตั้ง Library
 
 ```bash
 pip install -r requirements.txt
 ```
 
-หรือใช้ poetry:
-
-```bash
-pip install poetry
-poetry install
-```
-
-### 4. รันโปรแกรม
+4. รันโปรแกรม
 
 ```bash
 python main.py
@@ -51,30 +43,32 @@ python main.py
 
 ```
 coffee_oop/
-├── main.py
-├── styles.py
+├── main.py              ไฟล์หลัก
+├── styles.py            กำหนดสไตล์ UI
+├── requirements.txt     รายการ Library
+├── pyproject.toml       การตั้งค่าโปรเจกต์
 ├── models/
 │   ├── __init__.py
-│   ├── menu.py
-│   └── order.py
-├── assets/images/
-├── requirements.txt
-├── pyproject.toml
-└── README.md
+│   ├── menu.py          โมเดลเมนู (Beverage, Snack, MenuItem)
+│   └── order.py         โมเดลคำสั่งซื้อ (Order, OrderItem)
+└── assets/images/       รูปภาพเมนู
 ```
+
+## ฟีเจอร์หลัก
+
+- เลือกเมนูตามหมวดหมู่ (กาแฟ, ชา, ของว่าง) และค้นหาเมนู
+- เพิ่ม/ลดจำนวน/ลบรายการในคำสั่งซื้อ
+- เลือกประเภทการรับ: ทานที่ร้าน (ระบุเลขโต๊ะ) หรือซื้อกลับบ้าน
+- ยืนยันคำสั่งและสร้างใบเสร็จ สามารถบันทึกภาพใบเสร็จได้
+- สรุปยอดขายตามช่วงวันที่
+- บันทึกประวัติคำสั่งซื้อลงไฟล์ order_history.json
 
 ## วิธีใช้งาน
 
-1. **เลือกเมนู** - คลิกปุ่ม + ที่การ์ดเมนูเพื่อเพิ่มรายการ
-2. **แก้ไขรายการ** - ปรับจำนวนหรือลบรายการใน Order List
-3. **ระบุลูกค้า** - กรอกชื่อและเลขโต๊ะ (ทานที่ร้าน) หรือเลือกซื้อกลับบ้าน
-4. **ยืนยันคำสั่ง** - กดปุ่ม Confirm Order เพื่อสร้างใบเสร็จ
-
-## โครงสร้าง OOP
-
-- **Encapsulation**: `MenuItem`, `OrderItem`, `Order` encapsulate ข้อมูล
-- **Inheritance**: `Beverage`, `Snack` สืบทอดจาก `MenuItem`
-- **Polymorphism**: `get_display_price()` แสดงผลต่างกันตามประเภท
-- **Composition**: `Order` ประกอบด้วย `OrderItem` หลายรายการ
-- **SOLID**: SRP (คลาสเดียวหนึ่งหน้าที่)
-- **Design Patterns**: Factory (`create_menu_item`)
+1. เลือกหมวดหมู่เมนูหรือค้นหาชื่อเมนู
+2. กดปุ่ม + ที่การ์ดเมนูเพื่อเพิ่มรายการ
+3. กรอกชื่อลูกค้า เลขโต๊ะ (กรณีทานที่ร้าน)
+4. เลือก "ทานที่ร้าน" หรือ "ซื้อกลับบ้าน"
+5. ปรับจำนวนหรือลบรายการด้วยปุ่ม - และ ลบ
+6. กด "ยืนยันคำสั่ง" เพื่อสร้างใบเสร็จ
+7. กด "สรุปยอดขาย" เพื่อดูรายงานและสถิติ

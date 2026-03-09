@@ -12,7 +12,6 @@ class OrderItem:
 
     @property
     def subtotal(self) -> float:
-        """Encapsulation: คำนวณยอดย่อย"""
         return self.menu_item.price * self.quantity
 
     def __str__(self) -> str:
